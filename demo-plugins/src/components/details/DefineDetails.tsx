@@ -1,8 +1,10 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-
-import './DefineDetails.css'
+// Hooks
 import { usePlugin } from '@uncover/ward-react'
+// Components
+import { Link } from 'react-router-dom'
+// Styles
+import './DefineDetails.css'
 
 export interface DefineDetailsProperties {
   pluginId: string

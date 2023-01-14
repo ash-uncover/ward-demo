@@ -2,7 +2,7 @@
   "name": "@uncover/ward-demo",
   "version": "0.1.1",
   "author": "aSH <ash.uncover@gmail.com>",
-  "description": "Ward micro frontends frameworks",
+  "description": "Ward micro frontends frameworks Demos",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -24,8 +24,8 @@
   "dependencies": {
     "@uncover/js-utils": "^0.0.12",
     "@uncover/js-utils-logger": "^0.1.5",
-    "@uncover/ward": "^0.1.1",
-    "@uncover/ward-react": "^0.1.1"
+    "@uncover/ward": "^0.1.2",
+    "@uncover/ward-react": "^0.1.2"
   },
   "devDependencies": {
     "@babel/core": "^7.20.12",
