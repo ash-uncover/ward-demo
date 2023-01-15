@@ -21,7 +21,7 @@ export const Viewer = ({
       <div>VIEWER NOT LOADED</div>
     )
   }
-  console.log(viewer.elements)
+
   const element = viewer.elements.viewer
 
   return (

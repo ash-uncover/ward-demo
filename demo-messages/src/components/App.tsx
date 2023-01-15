@@ -4,8 +4,6 @@ import React, { useEffect, useState } from 'react'
 import Frame from './Frame'
 import Service from './Service'
 import MessageDispatcher from '@uncover/ward'
-import { getDispatcherId, getDispatchers, getServices } from '@uncover/ward/dist/lib/message/MessageDispatcher'
-import IMessageService from '@uncover/ward/dist/lib/message/IMessageService'
 
 let SERVICE = 1
 let FRAME = 1
@@ -29,29 +27,20 @@ const App = ({
   }
 
   const [services, setServices] = useState<string[]>([])
-  const [nbServices, setNbServices] = useState<number>(0)
   const [frames, setFrames] = useState<string[]>([])
-  const [nbFrames, setNbFrames] = useState<number>(0)
 
   useEffect(() => {
     const addServiceBase = MessageDispatcher.addService
-    MessageDispatcher.addService = (service: IMessageService) => {
+    MessageDispatcher.addService = (service: any) => {
       const result = addServiceBase(service)
-      setNbServices(getServices().length)
-      setNbFrames(getDispatchers().length)
       return result
     }
     const removeServiceBase = MessageDispatcher.removeService
-    MessageDispatcher.removeService = (service: IMessageService) => {
+    MessageDispatcher.removeService = (service: any) => {
       removeServiceBase(service)
-      setNbServices(getServices().length)
-      setNbFrames(getDispatchers().length)
     }
     MessageDispatcher.start(id)
     handleAddService()
-    window.addEventListener('beforeunload', () => {
-      console.log(`${getDispatcherId()} before unload`)
-    }, {capture: true})
   }, [])
 
   // Events //
@@ -142,7 +131,7 @@ const App = ({
             overflow: 'auto'
           }}
         >
-          <div>#Services: {nbServices}</div>
+          <div>#Services</div>
           <div
             style={{
               display: 'flex',
@@ -172,7 +161,7 @@ const App = ({
 
           }}
         >
-          <div>#Frames: {nbFrames}</div>
+          <div>#Frames</div>
           <div
             style={{
               display: 'flex',

@@ -28,7 +28,7 @@ const App = ({
   const rootPlugins = usePluginsRoot()
   const definitions = useDefinitions()
 
-  const [newPluginUrl, setNewPluginUrl] = useState<string>(' ')
+  const [newPluginUrl, setNewPluginUrl] = useState<string>('')
 
   useEffect(() => {
     PluginManager.reset()

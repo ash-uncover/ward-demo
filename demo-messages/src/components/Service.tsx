@@ -1,5 +1,4 @@
 import { Message, MessageService } from '@uncover/ward'
-import { getService } from '@uncover/ward/dist/lib/message/MessageDispatcher'
 import React, { FormEvent, useEffect, useState } from 'react'
 
 interface ServiceProperties {
@@ -14,6 +13,7 @@ const Service = ({
 
   // Hooks //
 
+  const [service] = useState(new MessageService(id))
   const [type, setType] = useState(`T: ${id}`)
   const [payload, setPayload] = useState(`P: ${id}`)
   const [messages, setMessages] = useState<Message[]>([])
@@ -26,7 +26,6 @@ const Service = ({
   }
 
   useEffect(() => {
-    const service = new MessageService(id)
     return service.init(handleMessage)
   }, [])
 
@@ -41,7 +40,7 @@ const Service = ({
   }
 
   const handleSendClick = () => {
-    getService(id)!.sendMessage({ type, payload })
+    service.sendMessage({ type, payload })
   }
 
   // Rendering //
