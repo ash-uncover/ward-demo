@@ -24,8 +24,8 @@
   "dependencies": {
     "@uncover/js-utils": "^0.0.12",
     "@uncover/js-utils-logger": "^0.1.5",
-    "@uncover/ward": "^0.1.2",
-    "@uncover/ward-react": "^0.1.3"
+    "@uncover/ward": "0.1.4",
+    "@uncover/ward-react": "0.1.5"
   },
   "devDependencies": {
     "@babel/core": "^7.20.12",

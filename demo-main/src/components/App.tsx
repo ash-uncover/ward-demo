@@ -1,6 +1,10 @@
 import React, { ReactNode } from 'react'
 // Hooks
-import { useProviders } from '@uncover/ward-react'
+import {
+  WardElement,
+  useProviders,
+  useProvider
+} from '@uncover/ward-react'
 // Components
 import { Link } from 'react-router-dom'
 // Style
@@ -25,7 +29,11 @@ export const App = ({
   return (
     <div className='app'>
       <div className='app__header'>
-        <span>WARD</span>
+        <Link
+          to={`/`}
+        >
+          WARD
+        </Link>
         {viewers.map((viewer) => {
           return (
             <Link
