@@ -27,7 +27,7 @@ export const PluginDependency = ({
   return (
     <li>
       <Link
-        to={`/plugins/${window.btoa(encodeURIComponent(plugin.name))}`}
+        to={`/${window.btoa(encodeURIComponent(plugin.name))}`}
       >
        {plugin.name}
       </Link>

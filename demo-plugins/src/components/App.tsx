@@ -5,12 +5,11 @@ import React, {
   useState,
 } from 'react'
 
-import { PluginSideEntry } from './side/PluginSideEntry'
-import { DefinitionSideEntry } from './side/DefinitionSideEntry'
+import PluginSideEntries from './side/PluginSideEntries'
+import DefinitionSideEntries from './side/DefinitionSideEntries'
 
+import { WardProvider, usePlugins } from '@uncover/ward-react'
 import './App.css'
-import { useDefinitions, usePlugins, usePluginsRoot } from '@uncover/ward-react'
-import { PluginManager } from '@uncover/ward'
 
 interface AppProperties {
   pluginId?: string
@@ -25,15 +24,10 @@ const App = ({
   // Hooks //
 
   const plugins = usePlugins()
-  const rootPlugins = usePluginsRoot()
-  const definitions = useDefinitions()
 
   const [newPluginUrl, setNewPluginUrl] = useState<string>('')
 
-  useEffect(() => {
-    PluginManager.reset()
-    PluginManager.loadPlugin('http://localhost:27000/plugin.json')
-  }, [])
+  const [plugin, setPlugin] = useState('http://localhost:27000/plugin.json')
 
   // Events //
 
@@ -44,8 +38,7 @@ const App = ({
   const handleSetPlugin = (event: FormEvent<HTMLButtonElement>) => {
     event.preventDefault()
     if (newPluginUrl && !Object.values(plugins).some(plugin => plugin.url === newPluginUrl)) {
-      PluginManager.reset()
-      PluginManager.loadPlugin(newPluginUrl)
+      setPlugin(newPluginUrl)
       setNewPluginUrl('')
     }
   }
@@ -53,73 +46,50 @@ const App = ({
   // Rendering //
 
   return (
-    <div className='plugins'>
+    <WardProvider
+      plugin={plugin}
+    >
 
-      <div className='plugins__side_panel'>
+      <div className='plugins'>
 
-        <h2>
-          Plugins
-        </h2>
+        <div className='plugins__side_panel'>
 
-        <h3>
-          Set plugin
-        </h3>
+          <h2>
+            Plugins
+          </h2>
 
-        <form>
-          <div>
-            <input
-              value={newPluginUrl}
-              onChange={handleNewPluginUrlChange}
-            />
-          </div>
-          <div>
-            <button
-              role='submit'
-              onClick={handleSetPlugin}>
-              Set
-            </button>
-          </div>
-        </form>
+          <h3>
+            Set plugin
+          </h3>
 
-        <h3>
-          Plugin list
-        </h3>
-
-        <ul>
-          {Object.values(rootPlugins).map(plugin => {
-            return (
-              <PluginSideEntry
-                key={plugin.name}
-                selectedPluginId={pluginId}
-                pluginId={plugin.name}
+          <form>
+            <div>
+              <input
+                value={newPluginUrl}
+                onChange={handleNewPluginUrlChange}
               />
-            )
-          })}
-        </ul>
+            </div>
+            <div>
+              <button
+                role='submit'
+                onClick={handleSetPlugin}>
+                Set
+              </button>
+            </div>
+          </form>
 
-        <h3>
-          Definitions
-        </h3>
+          <PluginSideEntries pluginId={pluginId} />
 
-        <ul>
-          {Object.values(definitions).map(definition => {
-            return (
-              <DefinitionSideEntry
-                key={definition.name}
-                selectedPluginId={pluginId}
-                definitionId={definition.name}
-              />
-            )
-          })}
-        </ul>
+          <DefinitionSideEntries />
+
+        </div>
+
+        <div className='plugins__details'>
+          {children}
+        </div>
 
       </div>
-
-      <div className='plugins__details'>
-        {children}
-      </div>
-
-    </div>
+    </WardProvider>
   )
 }
 

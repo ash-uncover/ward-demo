@@ -44,9 +44,9 @@ export const ProvideDetails = ({
           .map(dependency => {
             return (
               <ProvideDetails
-                key={dependency.name}
+                key={dependency}
                 selectedPluginId={selectedPluginId}
-                pluginId={dependency.name}
+                pluginId={dependency}
               />
             )
           })}

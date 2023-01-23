@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 import './PluginSideEntry.css'
-import { usePlugin } from '@uncover/ward-react'
+import { usePlugin, usePlugins } from '@uncover/ward-react'
 
 export interface PluginSideEntryProperties {
   pluginId: string
@@ -17,6 +17,7 @@ export const PluginSideEntry = ({
   // Rendering //
 
   const plugin = usePlugin(pluginId)
+  const plugins = usePlugins()
 
   if (!plugin) {
     return (
@@ -42,11 +43,12 @@ export const PluginSideEntry = ({
       <ul className='plugin-side-entry__entries'>
         {plugin.dependencies
           .map(dependency => {
+            const dependencyName = Object.values(plugins).find(p => p.loadUrl === dependency)?.name
             return (
               <PluginSideEntry
-                key={dependency.name}
+                key={dependencyName}
                 selectedPluginId={selectedPluginId}
-                pluginId={dependency.name}
+                pluginId={dependencyName || ''}
               />
             )
           })}

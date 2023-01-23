@@ -5,7 +5,7 @@ import { PluginProvider } from './PluginProvider'
 import { PluginDependency } from './PluginDependency'
 
 import './Plugin.css'
-import { usePlugin } from '@uncover/ward-react'
+import { usePlugin, usePlugins } from '@uncover/ward-react'
 
 interface PluginProperties {
   pluginId: string
@@ -16,6 +16,7 @@ const Plugin = ({
 }: PluginProperties) => {
 
   const plugin = usePlugin(pluginId)
+  const plugins = usePlugins()
 
   // Hooks //
 
@@ -26,10 +27,11 @@ const Plugin = ({
   const renderDependencies = () => {
     return (plugin.dependencies)
       .map(dependency => {
+        const dependencyName = Object.values(plugins).find(p => p.loadUrl === dependency)?.name
         return (
           <PluginDependency
-            key={dependency.name}
-            pluginId={dependency.name}
+            key={dependencyName}
+            pluginId={dependencyName || ''}
           />
         )
       })
