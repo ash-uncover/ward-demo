@@ -24,8 +24,8 @@
   "dependencies": {
     "@uncover/js-utils": "^0.0.12",
     "@uncover/js-utils-logger": "^0.1.5",
-    "@uncover/ward": "0.1.7",
-    "@uncover/ward-react": "0.1.9"
+    "@uncover/ward": "0.1.9",
+    "@uncover/ward-react": "0.1.11"
   },
   "devDependencies": {
     "@babel/core": "^7.20.12",
@@ -42,7 +42,7 @@
     "node-fetch": "^3.3.0",
     "postcss": "^8.4.21",
     "postcss-loader": "^7.0.2",
-    "postcss-preset-env": "^7.8.3",
+    "postcss-preset-env": "^8.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.7.0",
