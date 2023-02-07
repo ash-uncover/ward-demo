@@ -1,7 +1,7 @@
 import React from 'react'
 import {
   WardElement,
-  useProvider,
+  useWardProvider,
 } from '@uncover/ward-react'
 
 export interface ViewerProperties {
@@ -14,7 +14,7 @@ export const Viewer = ({
 
   // Rendering //
 
-  const viewer = useProvider(`ward-demo/viewers/${viewerId}`)
+  const viewer = useWardProvider(`ward-demo/viewers/${viewerId}`)
 
   if (!viewer) {
     return (

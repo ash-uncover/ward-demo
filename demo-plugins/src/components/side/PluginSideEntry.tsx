@@ -1,8 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-
+// Libs
+import {
+  useWardPlugin,
+  useWardPlugins
+} from '@uncover/ward-react'
+// Styles
 import './PluginSideEntry.css'
-import { usePlugin, usePlugins } from '@uncover/ward-react'
 
 export interface PluginSideEntryProperties {
   pluginId: string
@@ -16,8 +20,8 @@ export const PluginSideEntry = ({
 
   // Rendering //
 
-  const plugin = usePlugin(pluginId)
-  const plugins = usePlugins()
+  const plugin = useWardPlugin(pluginId)
+  const plugins = useWardPlugins()
 
   if (!plugin) {
     return (

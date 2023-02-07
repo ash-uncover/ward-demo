@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from 'react'
 // Libs
+import Ward from '@uncover/ward'
+import {
+  useWardDispatchers,
+  useWardServices
+} from '@uncover/ward-react'
 // Components
 import Frame from './Frame'
 import Service from './Service'
-import MessageDispatcher from '@uncover/ward'
+import { ArrayUtils } from '@uncover/js-utils'
 
 let SERVICE = 1
 let FRAME = 1
@@ -26,40 +31,29 @@ const App = ({
     horizontal = true
   }
 
-  const [services, setServices] = useState<string[]>([])
+  const services = useWardServices()
+
   const [frames, setFrames] = useState<string[]>([])
 
   useEffect(() => {
-    const addServiceBase = MessageDispatcher.addService
-    MessageDispatcher.addService = (service: any) => {
-      const result = addServiceBase(service)
-      return result
-    }
-    const removeServiceBase = MessageDispatcher.removeService
-    MessageDispatcher.removeService = (service: any) => {
-      removeServiceBase(service)
-    }
-    MessageDispatcher.start(id)
-    handleAddService()
+    Ward.addService(`Service-${SERVICE++}`)
   }, [])
 
   // Events //
 
   const handleAddService = () => {
-    const serviceId = `${id}-S${SERVICE++}`
-    setServices([...services, serviceId])
-  }
-
-  const handleStopService = (serviceId: string) => {
-    setServices(services.filter(service => service !== serviceId))
+    Ward.addService(`Service-${SERVICE++}`)
   }
 
   const handleAddFrame = () => {
-    setFrames([...frames, `${id}-F${FRAME++}`])
+    setFrames([
+      ...frames,
+      `Frame-${FRAME++}`
+    ])
   }
 
   const handleCloseFrame = (frameId: string) => {
-    setFrames(frames.filter(frame => frame !== frameId))
+    setFrames(ArrayUtils.removeElement(frames, frameId))
   }
 
   // Rendering //
@@ -138,14 +132,30 @@ const App = ({
               flexDirection: horizontal ? 'row' : 'column'
             }}
           >
-            {services.map((serviceId) => {
-              return (
-                <Service
-                  key={serviceId}
-                  id={serviceId}
-                  onStop={() => handleStopService(serviceId)}
-                />)
-            })}
+            {Object.keys(services)
+              .filter((serviceId) => {
+                return services[serviceId].type !== 'event'
+              })
+              .map((serviceId) => {
+                return (
+                  <div key={serviceId}>
+                    {services[serviceId].type} - {serviceId}
+                  </div>
+                )
+              })
+            }
+            {Object.keys(services)
+              .filter((serviceId) => {
+                return services[serviceId].type === 'event'
+              })
+              .map((serviceId) => {
+                return (
+                  <Service
+                    key={serviceId}
+                    id={serviceId}
+                  />)
+              })
+            }
           </div>
         </div>
         <div
@@ -170,12 +180,12 @@ const App = ({
               gap: '4px',
             }}
           >
-            {frames.map((frameId) => {
+            {frames.map((frame) => {
               return (
                 <Frame
-                  key={frameId}
-                  id={frameId}
-                  onClose={() => handleCloseFrame(frameId)}
+                  key={frame}
+                  id={frame}
+                  onClose={() => handleCloseFrame(frame)}
                 />
               )
             })}

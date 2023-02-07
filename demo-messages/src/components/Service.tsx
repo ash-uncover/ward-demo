@@ -1,22 +1,33 @@
-import { Message, MessageService } from '@uncover/ward'
-import React, { FormEvent, useEffect, useState } from 'react'
+import React, {
+  FormEvent,
+  useEffect,
+  useState
+} from 'react'
+import {
+  Message,
+} from '@uncover/ward'
+import {
+  useWardService,
+  useWardServices,
+} from '@uncover/ward-react'
 
 interface ServiceProperties {
   id: string
-  onStop: () => void
 }
 
 const Service = ({
   id,
-  onStop
 }: ServiceProperties) => {
 
   // Hooks //
 
-  const [service] = useState(new MessageService(id))
   const [type, setType] = useState(`T: ${id}`)
   const [payload, setPayload] = useState(`P: ${id}`)
   const [messages, setMessages] = useState<Message[]>([])
+
+  const service = useWardService(id, (message: Message) => handleMessage(message))
+
+  // Events //
 
   const handleMessage = (message: Message) => {
     setMessages(messages => ([
@@ -25,11 +36,9 @@ const Service = ({
     ]))
   }
 
-  useEffect(() => {
-    return service.init(handleMessage)
-  }, [])
-
-  // Events //
+  const handleStopService = () => {
+    service.terminate()
+  }
 
   const handleTypeChange = (event: FormEvent<HTMLInputElement>) => {
     setType(event.currentTarget.value)
@@ -64,7 +73,7 @@ const Service = ({
         }}
       >
         <h4 style={{ margin: 0 }}>{`Service ${id}`}</h4>
-        <button onClick={onStop}>X</button>
+        <button onClick={handleStopService}>X</button>
       </div>
       <div>
         <label style={{ width: '4rem', display: 'inline-block' }}>Type</label>

@@ -1,7 +1,11 @@
 import React from 'react'
 
-import { useDefinitions } from '@uncover/ward-react'
-import { DefinitionSideEntry } from './DefinitionSideEntry'
+import {
+  useWardDefinitions
+} from '@uncover/ward-react'
+import {
+  DefinitionSideEntry
+} from './DefinitionSideEntry'
 
 interface DefinitionSideEntriesProperties {
   pluginId?: string
@@ -13,7 +17,7 @@ const DefinitionSideEntries = ({
 
   // Hooks //
 
-  const definitions = useDefinitions()
+  const definitions = useWardDefinitions()
 
   // Events //
 

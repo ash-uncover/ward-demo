@@ -1,6 +1,6 @@
 import React from 'react'
 // Hooks
-import { usePlugin } from '@uncover/ward-react'
+import { useWardPlugin } from '@uncover/ward-react'
 // Components
 import { Link } from 'react-router-dom'
 // Styles
@@ -16,7 +16,7 @@ export const PluginDependency = ({
 
   // Rendering //
 
-  const plugin = usePlugin(pluginId)
+  const plugin = useWardPlugin(pluginId)
 
   if (!plugin) {
     return (

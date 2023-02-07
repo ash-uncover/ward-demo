@@ -6,7 +6,7 @@ import {
 } from 'react-router-dom'
 
 import './DefinitionSideEntry.css'
-import { useDefinition, useProviders } from '@uncover/ward-react'
+import { useWardDefinition, useWardProviders } from '@uncover/ward-react'
 
 export interface DefinitionSideEntryProperties {
   definitionId: string
@@ -20,8 +20,8 @@ export const DefinitionSideEntry = ({
 
   // Rendering //
 
-  const definition = useDefinition(definitionId)
-  const providers = useProviders(definitionId)
+  const definition = useWardDefinition(definitionId)
+  const providers = useWardProviders(definitionId)
 
   if (!definition) {
     return (

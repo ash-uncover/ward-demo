@@ -2,8 +2,8 @@ import React, { ReactNode } from 'react'
 // Hooks
 import {
   WardElement,
-  useProviders,
-  useProvider
+  useWardProviders,
+  useWardProvider
 } from '@uncover/ward-react'
 // Components
 import { Link } from 'react-router-dom'
@@ -24,7 +24,7 @@ export const App = ({
 
   // Rendering //
 
-  const viewers = useProviders('ward-demo/viewers') || []
+  const viewers = useWardProviders('ward-demo/viewers') || []
 
   return (
     <div className='app'>
@@ -37,8 +37,8 @@ export const App = ({
         {viewers.map((viewer) => {
           return (
             <Link
-              key={viewer.attributes.id}
-              to={`/${viewer.attributes.id}`}
+              key={String(viewer.attributes.id)}
+              to={`/${String(viewer.attributes.id)}`}
             >
               {viewer.attributes.name}
             </Link>

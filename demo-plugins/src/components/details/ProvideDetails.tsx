@@ -1,8 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-
+// Libs
+import { useWardPlugin } from '@uncover/ward-react'
+// Styles
 import './ProvideDetails.css'
-import { usePlugin } from '@uncover/ward-react'
 
 export interface ProvideDetailsProperties {
   pluginId: string
@@ -16,7 +17,7 @@ export const ProvideDetails = ({
 
   // Rendering //
 
-  const plugin = usePlugin(pluginId)
+  const plugin = useWardPlugin(pluginId)
 
   if (!plugin) {
     return (

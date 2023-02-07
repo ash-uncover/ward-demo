@@ -4,11 +4,15 @@ import React, {
   useEffect,
   useState,
 } from 'react'
-
+// Libs
+import {
+  WardProvider,
+  useWardPlugins
+} from '@uncover/ward-react'
+// Components
 import PluginSideEntries from './side/PluginSideEntries'
 import DefinitionSideEntries from './side/DefinitionSideEntries'
-
-import { WardProvider, usePlugins } from '@uncover/ward-react'
+// Styles
 import './App.css'
 
 interface AppProperties {
@@ -23,7 +27,7 @@ const App = ({
 
   // Hooks //
 
-  const plugins = usePlugins()
+  const plugins = useWardPlugins()
 
   const [newPluginUrl, setNewPluginUrl] = useState<string>('')
 

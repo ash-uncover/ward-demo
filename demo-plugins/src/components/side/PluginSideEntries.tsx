@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { usePluginsRoot } from '@uncover/ward-react'
+import { useWardPluginsRoot } from '@uncover/ward-react'
 import { PluginSideEntry } from './PluginSideEntry'
 
 interface PluginSideEntriesProperties {
@@ -13,7 +13,7 @@ const PluginSideEntries = ({
 
   // Hooks //
 
-  const rootPlugins = usePluginsRoot()
+  const rootPlugins = useWardPluginsRoot()
 
   // Events //
 

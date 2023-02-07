@@ -1,11 +1,12 @@
 import React from 'react'
+// Hooks
+import { useWardPlugin, useWardPlugins } from '@uncover/ward-react'
+// Components
 import { PluginDefinition } from './PluginDefinition'
-
 import { PluginProvider } from './PluginProvider'
 import { PluginDependency } from './PluginDependency'
-
+// Styles
 import './Plugin.css'
-import { usePlugin, usePlugins } from '@uncover/ward-react'
 
 interface PluginProperties {
   pluginId: string
@@ -15,8 +16,8 @@ const Plugin = ({
   pluginId
 }: PluginProperties) => {
 
-  const plugin = usePlugin(pluginId)
-  const plugins = usePlugins()
+  const plugin = useWardPlugin(pluginId)
+  const plugins = useWardPlugins()
 
   // Hooks //
 

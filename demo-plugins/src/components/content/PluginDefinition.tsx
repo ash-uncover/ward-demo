@@ -1,6 +1,6 @@
 import React from 'react'
 // Hooks
-import { useDefinition } from '@uncover/ward-react'
+import { useWardDefinition } from '@uncover/ward-react'
 // Styles
 import './PluginDefinition.css'
 
@@ -14,7 +14,7 @@ export const PluginDefinition = ({
 
   // Rendering //
 
-  const definition = useDefinition(definitionId)
+  const definition = useWardDefinition(definitionId)
 
   if (!definition) {
     return (

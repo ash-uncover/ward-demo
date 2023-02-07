@@ -1,6 +1,6 @@
 import React from 'react'
 // Hooks
-import { useProvider } from '@uncover/ward-react'
+import { useWardProvider } from '@uncover/ward-react'
 // Styles
 import './PluginProvider.css'
 
@@ -14,7 +14,7 @@ export const PluginProvider = ({
 
   // Rendering //
 
-  const provider = useProvider(providerId)
+  const provider = useWardProvider(providerId)
 
   if (!provider) {
     return (
