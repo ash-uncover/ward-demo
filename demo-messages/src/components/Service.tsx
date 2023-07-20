@@ -7,6 +7,7 @@ import {
   Message,
 } from '@uncover/ward'
 import {
+  WardProvider,
   useWardService,
   useWardServices,
 } from '@uncover/ward-react'
@@ -36,10 +37,6 @@ const Service = ({
     ]))
   }
 
-  const handleStopService = () => {
-    service.terminate()
-  }
-
   const handleTypeChange = (event: FormEvent<HTMLInputElement>) => {
     setType(event.currentTarget.value)
   }
@@ -49,7 +46,7 @@ const Service = ({
   }
 
   const handleSendClick = () => {
-    service.sendMessage({ type, payload })
+    service.dispatchEvent({ type, payload })
   }
 
   // Rendering //
@@ -73,7 +70,7 @@ const Service = ({
         }}
       >
         <h4 style={{ margin: 0 }}>{`Service ${id}`}</h4>
-        <button onClick={handleStopService}>X</button>
+
       </div>
       <div>
         <label style={{ width: '4rem', display: 'inline-block' }}>Type</label>
@@ -108,7 +105,6 @@ const Service = ({
       </ul>
     </div>
   )
-
 }
 
 export default Service
