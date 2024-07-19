@@ -5,6 +5,7 @@ import {
   useWardPlugin,
   useWardPlugins
 } from '@uncover/ward-react'
+import Plugin from '@uncover/ward/dist/plugin/object/Plugin'
 // Styles
 import './PluginSideEntry.css'
 
@@ -47,7 +48,7 @@ export const PluginSideEntry = ({
       <ul className='plugin-side-entry__entries'>
         {plugin.dependencies
           .map(dependency => {
-            const dependencyName = Object.values(plugins).find(p => p.loadUrl === dependency)?.name
+            const dependencyName = Object.values(plugins).find((p: Plugin) => p.loadUrl === dependency)?.name
             return (
               <PluginSideEntry
                 key={dependencyName}

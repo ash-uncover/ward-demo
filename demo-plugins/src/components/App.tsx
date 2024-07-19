@@ -9,6 +9,7 @@ import {
   WardProvider,
   useWardPlugins
 } from '@uncover/ward-react'
+import Plugin from '@uncover/ward/dist/plugin/object/Plugin'
 // Components
 import PluginSideEntries from './side/PluginSideEntries'
 import DefinitionSideEntries from './side/DefinitionSideEntries'
@@ -41,7 +42,7 @@ const App = ({
 
   const handleSetPlugin = (event: FormEvent<HTMLButtonElement>) => {
     event.preventDefault()
-    if (newPluginUrl && !Object.values(plugins).some(plugin => plugin.url === newPluginUrl)) {
+    if (newPluginUrl && !Object.values(plugins).some((plugin: Plugin) => plugin.url === newPluginUrl)) {
       setPlugin(newPluginUrl)
       setNewPluginUrl('')
     }
