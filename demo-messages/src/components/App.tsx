@@ -27,9 +27,7 @@ const App = ({}: AppProperties) => {
 
   const services = useWardServices();
 
-  const serviceMessage = useWardService('Service-Message', (message) => {
-    console.log(message)
-  });
+  const serviceMessage = useWardService('Service-Message', () => {});
 
   const [frames, setFrames] = useState<string[]>([]);
 
@@ -50,7 +48,7 @@ const App = ({}: AppProperties) => {
   const handleAddPictureInPicture = () => {
     serviceMessage.dispatchEvent({
       type: 'togglePip',
-      payload: { data: 'pip' }
+      payload: null
     })
   };
 

@@ -17,32 +17,33 @@ export interface AppProperties {
 
 declare global {
   interface Window {
-    documentPictureInPicture?: any;
+    documentPictureInPicture?: any
   }
 }
 
 async function openPip() {
   // Open a Picture-in-Picture window.
   const pipWindow = await window.documentPictureInPicture.requestWindow({
-    width: 700,
-    height: 500,
+    width: 1000,
+    height: 600,
   });
 
-  const div = document.createElement("div");
-  div.innerHTML = "toto";
+  const iframe = document.createElement("iframe");
+  iframe.src = "http://localhost:27001";
+  iframe.height = "100%";
+  iframe.width = "100%";
 
   // Move the player to the Picture-in-Picture window.
-  pipWindow.document.body.append(div);
+  pipWindow.document.body.append(iframe);
 }
 
 export const App = ({ children }: AppProperties) => {
+  
   // Hooks //
 
   useWardService("Service-Main", (message) => {
-    console.log(message);
     switch (message.type) {
       case "togglePip": {
-        // Early return if there's already a Picture-in-Picture window open
         if (window.documentPictureInPicture.window) {
           return;
         }
