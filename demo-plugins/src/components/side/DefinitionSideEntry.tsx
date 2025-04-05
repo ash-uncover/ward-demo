@@ -6,7 +6,7 @@ import {
 } from 'react-router-dom'
 
 import './DefinitionSideEntry.css'
-import { useWardDefinition, useWardProviders } from '@uncover/ward-react'
+import { useWardDefinition, useWardProviders } from '@sol.ac/ward-react'
 
 export interface DefinitionSideEntryProperties {
   definitionId: string

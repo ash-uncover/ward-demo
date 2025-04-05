@@ -1,6 +1,6 @@
 import React from 'react'
 // Hooks
-import { useWardPlugin, useWardPlugins } from '@uncover/ward-react'
+import { useWardPlugin, useWardPlugins } from '@sol.ac/ward-react'
 // Components
 import { PluginDefinition } from './PluginDefinition'
 import { PluginProvider } from './PluginProvider'

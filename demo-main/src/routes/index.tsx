@@ -9,7 +9,7 @@ import {
 import {
   WardDevTools,
   WardProvider
-} from '@uncover/ward-react'
+} from '@sol.ac/ward-react'
 
 import CONFIG from '../config'
 

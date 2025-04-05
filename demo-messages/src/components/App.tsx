@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 // Libs
-import Ward from "@uncover/ward";
-import { useWardService, useWardServices } from "@uncover/ward-react";
+import { Ward } from "@sol.ac/ward";
+import { useWardService, useWardServices } from "@sol.ac/ward-react";
 // Components
 import Frame from "./Frame";
 import Service from "./Service";
-import { ArrayUtils } from "@uncover/js-utils";
+import { ArrayUtils } from "@sol.ac/js-utils";
 
 let SERVICE = 1;
 let FRAME = 1;

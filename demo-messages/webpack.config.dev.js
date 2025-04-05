@@ -89,7 +89,6 @@ module.exports = merge(base, {
         use: [
           { loader: 'style-loader' },
           { loader: 'css-loader' },
-          { loader: 'postcss-loader' },
         ],
       },
     ],

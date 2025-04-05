@@ -8,8 +8,8 @@ import React, {
 import {
   WardProvider,
   useWardPlugins
-} from '@uncover/ward-react'
-import Plugin from '@uncover/ward/dist/plugin/object/Plugin'
+} from '@sol.ac/ward-react'
+import Plugin from '@sol.ac/ward/dist/plugin/object/Plugin'
 // Components
 import PluginSideEntries from './side/PluginSideEntries'
 import DefinitionSideEntries from './side/DefinitionSideEntries'

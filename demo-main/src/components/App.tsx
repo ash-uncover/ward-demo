@@ -5,7 +5,7 @@ import {
   useWardProviders,
   useWardProvider,
   useWardService,
-} from "@uncover/ward-react";
+} from "@sol.ac/ward-react";
 // Components
 import { Link } from "react-router-dom";
 // Style

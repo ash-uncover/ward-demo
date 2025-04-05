@@ -1,6 +1,6 @@
 import React from 'react'
 // Hooks
-import { useWardPlugin } from '@uncover/ward-react'
+import { useWardPlugin } from '@sol.ac/ward-react'
 // Components
 import { Link } from 'react-router-dom'
 // Styles

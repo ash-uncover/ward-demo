@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { useWardPluginsRoot } from '@uncover/ward-react'
+import { useWardPluginsRoot } from '@sol.ac/ward-react'
 import { PluginSideEntry } from './PluginSideEntry'
 
 interface PluginSideEntriesProperties {

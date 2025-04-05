@@ -1,7 +1,7 @@
 import React from 'react'
 import { createRoot } from 'react-dom/client'
 import Root from './routes/__layout'
-import { WardProvider } from '@uncover/ward-react'
+import { WardProvider } from '@sol.ac/ward-react'
 
 const containerRoot = document.getElementById('reactroot')!
 const root = createRoot(containerRoot)

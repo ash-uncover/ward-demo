@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 // Libs
-import { useWardPlugin } from '@uncover/ward-react'
+import { useWardPlugin } from '@sol.ac/ward-react'
 // Styles
 import './ProvideDetails.css'
 

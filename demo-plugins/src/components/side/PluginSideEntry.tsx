@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom'
 import {
   useWardPlugin,
   useWardPlugins
-} from '@uncover/ward-react'
-import Plugin from '@uncover/ward/dist/plugin/object/Plugin'
+} from '@sol.ac/ward-react'
+import Plugin from '@sol.ac/ward/dist/plugin/object/Plugin'
 // Styles
 import './PluginSideEntry.css'
 

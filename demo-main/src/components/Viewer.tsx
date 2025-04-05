@@ -2,7 +2,7 @@ import React from 'react'
 import {
   WardElement,
   useWardProvider,
-} from '@uncover/ward-react'
+} from '@sol.ac/ward-react'
 
 export interface ViewerProperties {
   viewerId: string

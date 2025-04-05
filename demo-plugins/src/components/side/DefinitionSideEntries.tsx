@@ -2,7 +2,7 @@ import React from 'react'
 
 import {
   useWardDefinitions
-} from '@uncover/ward-react'
+} from '@sol.ac/ward-react'
 import {
   DefinitionSideEntry
 } from './DefinitionSideEntry'

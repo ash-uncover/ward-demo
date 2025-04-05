@@ -1,10 +1,10 @@
 import React, { FormEvent, useEffect, useState } from "react";
-import { Message } from "@uncover/ward";
+import { Message } from "@sol.ac/ward";
 import {
   WardProvider,
   useWardService,
   useWardServices,
-} from "@uncover/ward-react";
+} from "@sol.ac/ward-react";
 
 interface ServiceProperties {
   id: string;
